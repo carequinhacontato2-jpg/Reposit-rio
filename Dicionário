@@ -1,0 +1,13 @@
+meme_dict = {
+            "CRINGE": "Algo vergonhoso ou constrangedor",
+            "STALKEAR": "Investigar a vida de alguém online",
+            "FLOPAR": "O vídeo não repercurtir; Viralizar.",
+
+}
+
+word = input("Digite uma palavra moderna que você não entende (escreva todo a palavra em letras maiúsculas): ")
+
+if word in meme_dict.keys():
+    print (word + ":" + meme_dict[word])
+else:
+    print("Não encontramos essa palavra!")
