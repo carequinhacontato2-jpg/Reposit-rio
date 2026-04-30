@@ -1,0 +1,46 @@
+import discord
+from discord.ext import commands
+import random
+
+intents = discord.Intents.default()
+intents.message_content = True
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+@bot.event
+async def on_ready():
+    print(f'Bot Fatos Ecológicos logado como {bot.user}')
+
+    canal_geral = discord.utils.get(bot.get_all_channels(), name="geral")
+    
+    if canal_geral: 
+        await canal_geral.send("🟢 **O seu professor favorito sobre o Antropoceno!**")
+    else:
+        print("Aviso: Não encontrei nenhum canal com o nome 'geral'.")
+
+@bot.command()
+async def dica_jovem(ctx):
+    dica = [
+        "Separe lixo reciclável corretamente.",
+        "Prefira transporte público, bicicleta ou caminhada quando possível.",
+        "Use garrafas reutilizáveis em vez de plástico descartável.",
+    ]
+    await ctx.send(random.choice(dica))
+
+@bot.command()
+async def desafio(ctx):
+    desafios = [
+        "Desafio de hoje: Diga NÃO ao plástico descartável! 🚫",
+        "Desafio de hoje: Não jogue comida fora por 24 horas! 🍎",
+    ]
+    await ctx.send(f"🔥 {random.choice(desafios)}")
+
+@bot.command()
+async def fato(ctx):
+    fatos = [
+        "O plástico leva até 400 anos para se decompor.",
+        "Uma garrafa de plástico pode ser reutilizada por até 100 vezes.",
+        "O uso de transporte público pode reduzir a emissão de gases de efeito estufa em até 30%."
+    ]
+    await ctx.send(f"🔥 {random.choice(fatos)}")
+
+bot.run("S")
